@@ -1,87 +1,183 @@
 body {
     background-color: black;
     color: white;
-  
-    font-weight: 300;
-    padding: 40px;
-    padding-top: 60px;
+    margin: 0;
     font-family: 'Inter', sans-serif;
+    padding: 20px;
   }
-  
-  .heading {
-    font-size: 28px;
-    margin-bottom: 20px;
+
+  * {
+    box-sizing: border-box;
   }
-  
-  #input-form {
+
+  .main {
+    margin: 20px 50px;
+  }
+
+  .main form .sub {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 10px;
-  }
-  
-  input {
-    border: 0.5px solid white;
-    background-color: black;
-    color: white;
-    padding: 5px;
-    margin: 5px 0;
-    margin-right: 60px;
-      border-radius: 3px;
-      min-width: 350px;
-    height: 35px;
-  }
-  
-  input:focus {
-    outline: none;
-  
-  }
-  
-  #error {
-    color: red;
    
   }
-  
-  #success {
+
+  form .sub .inputs {
+    margin-bottom: 15px;
+    width: 30%;
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+
+  .sub .inputs .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .sub .inputs input {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    color: lightgrey;
+    background-color: black;
+    padding-left: 15px;
+    font-size: 16px;
+
+  }
+
+ #empBtn {
+    font-weight: bold;
+    height: 35px;
+    width: 100px;
+    margin: 40px 40px 40px 0px;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+
+  .error{
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  .success {
     color: green;
+    margin-bottom: 10px;
   }
-  
-  #addUser {
-    background-color: #FFFFFF;
-    padding: 10px;
-    border: 1px solid black;
-    margin-bottom: 20px;
-  }
-  
-  #initial {
-    color: gray;
-  
-  }
-  
-  .emCard {
+
+  .added {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
-    border: 1px solid white;
     border-radius: 5px;
-    min-width: 400px;
-    padding: 5px 10px;
-    margin: 10px 0;
-    height: 35px;
+    padding: 10px 30px 10px 30px;
+    border: 1px solid rgb(230, 217, 217);
+    width: 40vw;
+    gap: 3%;
+    height: 7vh;
+    font-size: 15px;
+    color: white;
   }
   
-  .employeeOuterContainer {
+ 
+
+
+  .dltBtn {
+    color: black;
+    border: none;
+    padding: 10x 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 33px;
+    height: 32px;
+    width: 100px;
+    /* margin-top: 40px; */
+    
+    
+
+  }
+
+  #new-div {
+    color: white;
     display: flex;
-    justify-content: start;
+    flex-flow: row wrap;
+    width: 50%;
+  }
+
+
+  .dlt-div{
+    /* border: 2px solid yellow; */
     align-items: center;
-    gap: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    gap: 30px;
+    height: 62px;
+    font-size: 15px;
+    width: 10%;
   }
-  
-  .delete-employee-button {
-    background-color: white;
-    border: 1px solid black;
-    padding: 13px;
-    border-radius: 8px;
-    height: auto;
+
+  #alreadyAdded{
+    color: gray;
   }
+
+
+
+  /* responsive */
+
+  @media screen and (max-width: 768px) {
+
+    body{
+        padding: 20px;
+    }
+    .main {
+    margin: 20px 20px;
+    }
+
+    .main form .sub {
+        display: grid;
+        gap: 10px;
+       
+      }
+    
+    .main form .sub .inputs {
+    width: 90%;
+
+    }
+    
+    .added {
+    width: 90vw;
+    }
+    
+    #new-div {
+    width: 100%;
+    }
+    
+    .dlt-div {
+    width: 15%;
+    gap: 10px;
+    }
+    }
+    
+    @media screen and (max-width: 480px) {
+    .main form .sub .inputs {
+    width: 100%;
+    }
+    
+    .added {
+    width: 100%;
+    }
+    
+    .dltBtn {
+    margin-left: 10px;
+    }
+    
+    #alreadyAdded{
+    font-size: 12px;
+    }
+    }
+    
+    
+    
+    
