@@ -8,38 +8,41 @@
     <title>Employees Management</title>
 </head>
 <body>
-    <p class="heading">New Employees</span>
-   <form id="input-form">
-        <div >
-            <label for="name">Enter Name</label><br>
-            <input type="text" id="name">
-        </div>
+   <div class="main">
+        <h1>New Employees </h1><br>
+        <form>
+            <div class="sub">
+                <div class="inputs">
+                    <span class="details">Enter Name</span>
+                    <input type="text" id="name" name="name" />
 
-        <div>
-            <label for="prof">Enter Profession</label><br>
-            <input type="text" id="prof">
-        </div>
+                </div>
+                <div class="inputs">
+                    <span class="details">Enter Profession</span>
+                    <input type="text" id="profession" name="profession" />
 
-       <div>
-            <label for="age">Enter Age</label><br>
-            <input type="number" id="age">
-       </div>
-       
-        
-   </form>
-   <button type="submit" id="addUser">Add User</button>
+                </div>
+                <div class="inputs">
 
-   <p id="error"></p>
-   <p id="success"></p>
+                    <span class="details">Enter Age</span>
+                    <input type="number" id="age" name="age" />
+                </div>
+            </div>
 
-   <p>Added Employees</p>
+            <button type="submit" id="empBtn">Add Users</button>
+        </form>
 
-   <div id="addedEmployee">
-    <p id="initial">You have 0 Employees</p>
 
-   </div>
+        <div class="error" id="error"></div>
+        <div class="success" id="success"></div>
+        <h2>Added Employees</h2>
 
-   
+        <div id="new-div">You have 0 Employees.</div>
+        <div id="alreadyAdded">You have 0 Employees.</div>
+
+
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
