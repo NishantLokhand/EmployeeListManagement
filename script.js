@@ -1,85 +1,91 @@
-let employees = [];
+let arr = [];
+function show() {
+    const newDiv = document.getElementById('new-div');
+    newDiv.innerHTML = '';
 
-document.querySelector("#addUser").addEventListener('click', addEmployee);
+    for (let i = 0; i < arr.length; i++) {
+        const employee = arr[i];
 
+        const added = document.createElement('div');
+        added.setAttribute('class', 'added');
 
-function addEmployee(event) {
-  event.preventDefault();
+        const ids = document.createElement('span');
+        ids.textContent = ` ${employee.id}`;
+        added.appendChild(ids);
 
-  const name = document.getElementById("name").value;
-  const profession = document.getElementById("prof").value;
-  const age = document.getElementById("age").value;
+        const names = document.createElement('span');
+        names.textContent = ` Name: ${employee.name}`;
+        added.appendChild(names);
 
+        const professions = document.createElement('span');
+        professions.textContent = ` Profession: ${employee.profession}`;
+        added.appendChild(professions);
 
-  if (name.trim() === '' || prof.trim() === '' || age.trim() === '') {
-    document.getElementById("error").innerHTML = "Error : Please Make sure All the fields are filled before adding in an employee !";
-    document.getElementById("success").innerHTML = "";
-    return
-  }
+        const ages = document.createElement('span');
+        ages.textContent = ` Age: ${employee.age}`;
+        added.appendChild(ages);
 
+        const deletes = document.createElement('button');
+        deletes.setAttribute('class', 'dltBtn');
+        deletes.textContent = 'Delete User';
+        deletes.setAttribute('onclick', `deleteDiv(${employee.id})`);
+        const dltDiv = document.createElement('div');
+        dltDiv.setAttribute('class', 'dlt-div');
+        dltDiv.appendChild(deletes);
+        newDiv.appendChild(added);
+        newDiv.appendChild(dltDiv);
 
-    const id = employees.length + 1;
-
-    const employee = { id, name, prof, age };
-
-    employees.push(employee);
-    document.getElementById("success").innerHTML = "Succes :Employee Added!";
-    document.getElementById("error").innerHTML = "";
-
-    displayEmployee();
-
-  document.querySelector("form").reset();
-
+    }
 }
 
 
-function displayEmployee() {
+document.querySelector('form').addEventListener('submit', adding);
 
-  const addedEmployeesContainer = document.getElementById("addedEmployee");
-  addedEmployeesContainer.innerHTML = ' ';
+function adding(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const profession = document.getElementById('profession').value;
+    const age = document.getElementById('age').value;
 
+    if (name.trim() === '' || profession.trim() === '' || age.trim() === '') {
+        document.getElementById('error').textContent = 'Error: Please make sure all fields are filled before adding an employee!';
+        document.getElementById('success').textContent = '';
+        return;
+    }
 
-  employees.forEach(employee => {
-    const employeeOuterContainer = document.createElement('div');
-    employeeOuterContainer.className = 'employeeOuterContainer';
-
-
-    const employeeCard = document.createElement('div');
-    employeeCard.className = 'emCard';
-
-
-    const idSpan = document.createElement('span');
-    idSpan.innerText = `${employee.id}.`;
-    employeeCard.appendChild(idSpan);
-
-    const nameSpan = document.createElement('span');
-    nameSpan.textContent = `Name : ${employee.name}`;
-    employeeCard.appendChild(nameSpan);
-
-    const professionSpan = document.createElement('span');
-    professionSpan.textContent = `Prof : ${employee.prof}`;
-    employeeCard.appendChild(professionSpan);
-
-    const ageSpan = document.createElement('span');
-    ageSpan.textContent = `Age : ${employee.age}`;
-    employeeCard.appendChild(ageSpan);
-
-    employeeOuterContainer.appendChild(employeeCard);
-
-    const deleteButton = document.createElement('button');
-    deleteButton.className = 'delete-employee-button';
-    deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener('click', () => {
-      const index = employees.findIndex(emp => emp.id === employee.id);
-      employees.splice(index, 1);
-
-      displayEmployee();
-    });
-
-    employeeOuterContainer.appendChild(deleteButton);
-
-    addedEmployeesContainer.appendChild(employeeOuterContainer);
-
-  });
-
+    const id = arr.length + 1;
+    const employee = { id, name, profession, age };
+    arr.push(employee);
+    show();
+    document.getElementById('success').textContent = 'Success: Employee added!';
+    const added = document.getElementById('alreadyAdded');
+    added.style.display = 'none';
+    document.getElementById('error').textContent = '';
+    document.querySelector('form').reset();
 }
+
+
+
+
+    function deleteDiv(curr) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].id === curr) {
+                arr.splice(i, 1);
+                
+                document.getElementById('success').textContent = '';
+                document.getElementById('error').textContent = 'Employee Removed!';
+                break;
+            }
+        }
+        
+        if(arr.length===0){
+            const added = document.getElementById('alreadyAdded');
+            added.style.display = 'block';
+            document.getElementById('error').textContent = '';
+        }
+        show()
+    }
+  
+
+
+show();
